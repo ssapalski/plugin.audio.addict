@@ -1,0 +1,48 @@
+{
+    "stream_url": {
+        "user_agent": "Mozilla/5.0"
+    },
+    "networks": {
+        "di": {
+            "domain": "di.fm",
+            "display_name": "DigitallyImported",
+            "streams": {
+                "public": {"low": "android_low", "moderate": "android", "medium": "android_high"},
+                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
+            }
+        },
+        "radiotunes": {
+            "domain": "radiotunes.com",
+            "display_name": "RadioTunes",
+            "streams": {
+                "public": {"low": "android_low", "moderate": "android", "medium": "android_high"},
+                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
+            }
+        },
+        "rockradio": {
+            "domain": "rockradio.com",
+            "display_name": "RockRadio",
+            "streams": {
+                "public": {"low": "android_low", "moderate": "android", "medium": "public3"},
+                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
+            }
+        },
+        "jazzradio": {
+            "domain": "jazzradio.com",
+            "display_name": "JazzRadio",
+            "streams": {
+                "public": {"low": "android_low", "moderate": "android", "medium": "android_high"},
+                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
+            }
+        },
+        "classicalradio": {
+            "domain": "classicalradio.com",
+            "display_name": "ClassicalRadio",
+            "streams": {
+                "public": {"low": "android_low", "moderate": "android", "medium": "android_high"},
+                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
+            }
+        }
+    },
+    "network_order": ["di", "radiotunes", "rockradio", "jazzradio", "classicalradio"]
+}

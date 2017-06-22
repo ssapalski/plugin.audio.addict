@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="Account">
+        <setting type="lsep" label="Credentials"/>
+        <setting id="username" type="text" label="username"/>
+        <setting id="password" type="text" label="password" option="hidden"/>
+
+        <setting type="lsep" label="Options"/>
+        <setting id="premium" label="premium" type="bool" default="false"/>
+    </category>
+    <category label="Networks">
+        <setting type="lsep" label="Activate/Deactivate"/>
+        <setting id="activate_di" label="DigitallyImported" type="bool" default="true"/>
+        <setting id="activate_radiotunes" label="RadioTunes" type="bool" default="true"/>
+        <setting id="activate_rockradio" label="RockRadio" type="bool" default="true"/>
+        <setting id="activate_jazzradio" label="JazzRadio" type="bool" default="true"/>
+        <setting id="activate_classicalradio" label="ClassicalRadio" type="bool" default="true"/>
+    </category>
+    <category label="Stream">
+        <setting type="lsep" label="Quality"/>
+        <setting id="quality_free" type="select" label="free" values="low|moderate"/>
+        <setting id="quality_premium" type="select" label="premium" values="low|moderate|medium|high"/>
+    </category>
+</settings>
