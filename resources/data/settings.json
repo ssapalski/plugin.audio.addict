@@ -7,7 +7,7 @@
             "domain": "di.fm",
             "display_name": "DigitallyImported",
             "streams": {
-                "public": {"low": "android_low", "moderate": "android", "medium": "android_high"},
+                "public": {"low": "android_low", "moderate": "android"},
                 "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
             }
         },
@@ -15,7 +15,7 @@
             "domain": "radiotunes.com",
             "display_name": "RadioTunes",
             "streams": {
-                "public": {"low": "android_low", "moderate": "android", "medium": "android_high"},
+                "public": {"low": "android_low", "moderate": "android"},
                 "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
             }
         },
@@ -23,7 +23,7 @@
             "domain": "rockradio.com",
             "display_name": "RockRadio",
             "streams": {
-                "public": {"low": "android_low", "moderate": "android", "medium": "public3"},
+                "public": {"low": "android_low", "moderate": "android"},
                 "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
             }
         },
@@ -31,7 +31,7 @@
             "domain": "jazzradio.com",
             "display_name": "JazzRadio",
             "streams": {
-                "public": {"low": "android_low", "moderate": "android", "medium": "android_high"},
+                "public": {"low": "android_low", "moderate": "android"},
                 "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
             }
         },
@@ -39,7 +39,7 @@
             "domain": "classicalradio.com",
             "display_name": "ClassicalRadio",
             "streams": {
-                "public": {"low": "android_low", "moderate": "android", "medium": "android_high"},
+                "public": {"low": "android_low", "moderate": "android"},
                 "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
             }
         }
