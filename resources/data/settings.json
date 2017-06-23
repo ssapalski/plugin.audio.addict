@@ -2,46 +2,30 @@
     "stream_url": {
         "user_agent": "Mozilla/5.0"
     },
+    "streams": {
+        "public": {"low": "android_low", "moderate": "android"},
+        "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
+    },
     "networks": {
         "di": {
             "domain": "di.fm",
-            "display_name": "DigitallyImported",
-            "streams": {
-                "public": {"low": "android_low", "moderate": "android"},
-                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
-            }
+            "display_name": "DigitallyImported"
         },
         "radiotunes": {
             "domain": "radiotunes.com",
-            "display_name": "RadioTunes",
-            "streams": {
-                "public": {"low": "android_low", "moderate": "android"},
-                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
-            }
+            "display_name": "RadioTunes"
         },
         "rockradio": {
             "domain": "rockradio.com",
-            "display_name": "RockRadio",
-            "streams": {
-                "public": {"low": "android_low", "moderate": "android"},
-                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
-            }
+            "display_name": "RockRadio"
         },
         "jazzradio": {
             "domain": "jazzradio.com",
-            "display_name": "JazzRadio",
-            "streams": {
-                "public": {"low": "android_low", "moderate": "android"},
-                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
-            }
+            "display_name": "JazzRadio"
         },
         "classicalradio": {
             "domain": "classicalradio.com",
-            "display_name": "ClassicalRadio",
-            "streams": {
-                "public": {"low": "android_low", "moderate": "android"},
-                "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
-            }
+            "display_name": "ClassicalRadio"
         }
     },
     "network_order": ["di", "radiotunes", "rockradio", "jazzradio", "classicalradio"]

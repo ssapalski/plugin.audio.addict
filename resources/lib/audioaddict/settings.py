@@ -32,7 +32,8 @@ class Settings(object):
 
     def get_network(self, network_key):
         return NetworkSettings(network_key,
-                               self._settings['networks'][network_key])
+                               self._settings['networks'][network_key],
+                               self._settings['streams'])
 
     @property
     def networks(self):
@@ -45,8 +46,10 @@ class Settings(object):
 
 
 class NetworkSettings(object):
-    def __init__(self, key, network):
+    def __init__(self, key, network, streams):
         self._network = network
+        self._streams = streams
+
         self.key = key
 
     @property
@@ -62,11 +65,9 @@ class NetworkSettings(object):
         return "http://www.%s/" % self.domain
 
     def get_stream_key(self, quality_key, premium=False):
-        streams = self._network['streams']
-
         if premium:
-            stream_key = streams['premium'][quality_key]
+            stream_key = self._streams['premium'][quality_key]
         else:
-            stream_key = streams['public'][quality_key]
+            stream_key = self._streams['public'][quality_key]
 
         return stream_key
