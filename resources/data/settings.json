@@ -9,24 +9,28 @@
     "networks": {
         "di": {
             "domain": "di.fm",
-            "display_name": "DigitallyImported"
+            "display_name": "DigitallyImported",
+            "sort_key": 0
         },
         "radiotunes": {
             "domain": "radiotunes.com",
-            "display_name": "RadioTunes"
+            "display_name": "RadioTunes",
+            "sort_key": 1
         },
         "rockradio": {
             "domain": "rockradio.com",
-            "display_name": "RockRadio"
+            "display_name": "RockRadio",
+            "sort_key": 2
         },
         "jazzradio": {
             "domain": "jazzradio.com",
-            "display_name": "JazzRadio"
+            "display_name": "JazzRadio",
+            "sort_key": 3
         },
         "classicalradio": {
             "domain": "classicalradio.com",
-            "display_name": "ClassicalRadio"
+            "display_name": "ClassicalRadio",
+            "sort_key": 4
         }
-    },
-    "network_order": ["di", "radiotunes", "rockradio", "jazzradio", "classicalradio"]
+    }
 }

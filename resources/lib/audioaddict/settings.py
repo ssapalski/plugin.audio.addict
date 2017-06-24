@@ -39,10 +39,10 @@ class Settings(object):
     def networks(self):
         if not self._networks:
             self._networks = []
-            for network_key in self._settings['network_order']:
+            for network_key in self._settings['networks']:
                 self._networks.append(self.get_network(network_key))
 
-        return self._networks
+        return sorted(self._networks, key=lambda x : x.sort_key)
 
 
 class NetworkSettings(object):
@@ -63,6 +63,10 @@ class NetworkSettings(object):
     @property
     def referer(self):
         return "http://www.%s/" % self.domain
+
+    @property
+    def sort_key(self):
+        return self._network['sort_key']
 
     def get_stream_key(self, quality_key, premium=False):
         if premium:
