@@ -24,7 +24,6 @@ class Settings(object):
     def __init__(self, addon):
         settings_path = get_settings_path(addon)
         self._settings = load_settings(settings_path)
-        self._networks = None
 
     @property
     def user_agent(self):
@@ -37,12 +36,11 @@ class Settings(object):
 
     @property
     def networks(self):
-        if not self._networks:
-            self._networks = []
-            for network_key in self._settings['networks']:
-                self._networks.append(self.get_network(network_key))
+        networks = []
+        for network_key in self._settings['networks']:
+            networks.append(self.get_network(network_key))
 
-        return sorted(self._networks, key=lambda x : x.sort_key)
+        return sorted(networks, key=lambda x : x.sort_key)
 
 
 class NetworkSettings(object):
