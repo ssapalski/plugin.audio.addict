@@ -1,3 +1,8 @@
+v0.2.0 (2017-June-25)
+  * description updated
+  * change logo design to final version
+    thanks to Rantanplan-1 who made it
+
 v0.1.1 (2017-June-23)
   * code simplification, no functional changes
 
