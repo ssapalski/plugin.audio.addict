@@ -39,3 +39,7 @@ No! But if you want to listen to the streams without any interruption by commerc
 **Where to register and get a premium account?**
 
 You can do this at any of the networks web sites. Your account will be valid for all networks.
+
+# Contributors
+
+**Rantanplan-1**: logo design
