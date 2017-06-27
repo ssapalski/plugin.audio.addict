@@ -4,3 +4,7 @@ class AudioAddictException(Exception):
 
 class AuthenticationError(AudioAddictException):
     pass
+
+
+class EmptyCredentialsError(AudioAddictException):
+    pass
