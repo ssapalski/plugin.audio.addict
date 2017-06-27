@@ -1,5 +1,5 @@
 # plugin.audio.addict
-Kodi music addon for the AudioAddict family of radio streams.
+Kodi audio addon for the AudioAddict family of radio streams.
 
 # Networks
   * [DigitallyImported](http://www.di.fm)
