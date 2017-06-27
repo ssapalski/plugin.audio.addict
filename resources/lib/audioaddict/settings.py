@@ -40,7 +40,7 @@ class Settings(object):
         for network_key in self._settings['networks']:
             networks.append(self.get_network(network_key))
 
-        return sorted(networks, key=lambda x : x.sort_key)
+        return sorted(networks, key=lambda x: x.sort_key)
 
 
 class NetworkSettings(object):
