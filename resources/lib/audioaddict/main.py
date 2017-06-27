@@ -1,11 +1,13 @@
 import xbmcgui
 
-from audioaddict.exceptions import AuthenticationError
+from audioaddict.exceptions import AuthenticationError, EmptyCredentialsError
+from audioaddict.resources import get_welcome_text
 from audioaddict.settings import Settings
 from audioaddict.networks import show_networks
 from audioaddict.channels import show_channels
 from audioaddict.addon import ExtendedAddon
 from audioaddict.play import play_stream
+from audioaddict.gui import TextViewer
 
 
 def set_addon_defaults(addon):
@@ -33,6 +35,10 @@ def run_addon(addon_url, addon_handle, addon_args):
         settings = Settings(addon)
 
         main(addon, settings)
+    except EmptyCredentialsError as e:
+        dialog = TextViewer(header='Welcome!', text=get_welcome_text(addon))
+        dialog.doModal()
     except AuthenticationError as e:
-        xbmcgui.Dialog().ok("Error", e.message)
+        dialog = xbmcgui.Dialog()
+        dialog.ok('Authentication error', e.message)
         addon.openSettings()
