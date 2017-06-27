@@ -2,11 +2,21 @@ import xbmcgui
 import xbmcplugin
 
 from audioaddict.api import AudioAddictApi
+from audioaddict.exceptions import EmptyCredentialsError
+
+
+def get_credentials(addon):
+    username = addon.getSetting('username')
+    password = addon.getSetting('password')
+
+    if not username and not password:
+        raise EmptyCredentialsError()
+
+    return username, password
 
 
 def get_listen_key(addon, settings):
-    username = addon.getSetting('username')
-    password = addon.getSetting('password')
+    username, password = get_credentials(addon)
     network = settings.networks[0]
 
     api = AudioAddictApi(network.key)
