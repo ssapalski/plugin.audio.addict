@@ -1,3 +1,7 @@
+v0.3.0 (2017-June-28)
+  + add welcome text for new user describing
+    how to create an account
+
 v0.2.0 (2017-June-25)
   * description updated
   * change logo design to final version
