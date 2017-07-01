@@ -1,6 +1,8 @@
 import os
 import xbmc
 
+from audioaddict.resources import get_raw_settings
+
 # Just in case we are running on python 2.6, simplejson will be faster
 try:
     import simplejson as json
@@ -22,8 +24,7 @@ def get_settings_path(addon):
 
 class Settings(object):
     def __init__(self, addon):
-        settings_path = get_settings_path(addon)
-        self._settings = load_settings(settings_path)
+        self._settings = get_raw_settings(addon)
 
     @property
     def user_agent(self):

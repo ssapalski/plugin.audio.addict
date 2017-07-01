@@ -1,6 +1,12 @@
 import os
 import xbmc
 
+# Just in case we are running on python 2.6, simplejson will be faster
+try:
+    import simplejson as json
+except ImportError:
+    import json
+
 
 def get_addon_path(addon):
     kodi_path = addon.getAddonInfo('path')
@@ -22,3 +28,11 @@ def get_welcome_text(addon):
 
     with open(welcome_text_path, 'r') as f:
         return f.read()
+
+
+def get_raw_settings(addon):
+    data_path = get_data_path(addon)
+    settings_path = os.path.join(data_path, 'settings.json')
+
+    with open(settings_path, 'r') as f:
+        return json.loads(f.read())
