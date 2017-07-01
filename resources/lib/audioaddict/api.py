@@ -15,7 +15,7 @@ class AudioAddictApi(object):
                           params={'username': username, 'password': password})
 
         if r.status_code == 403:
-            raise AuthenticationError("username or password is invalid")
+            raise AuthenticationError("username and password do not match")
         else:
             r.raise_for_status()
 
