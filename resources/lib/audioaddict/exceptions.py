@@ -8,3 +8,7 @@ class AuthenticationError(AudioAddictException):
 
 class EmptyCredentialsError(AudioAddictException):
     pass
+
+
+class NoNetworksSelectedError(AudioAddictException):
+    pass

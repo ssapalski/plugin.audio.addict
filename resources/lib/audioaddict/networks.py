@@ -2,7 +2,8 @@ import xbmcgui
 import xbmcplugin
 
 from audioaddict.api import AudioAddictApi
-from audioaddict.exceptions import EmptyCredentialsError
+from audioaddict.exceptions import EmptyCredentialsError, \
+                                   NoNetworksSelectedError
 
 
 def get_credentials(addon):
@@ -28,9 +29,12 @@ def get_listen_key(addon, settings):
 def show_networks(addon, settings):
     listen_key = get_listen_key(addon, settings)
 
+    succeeded = False
     for network in settings.networks:
         if not addon.getBooleanSetting('activate_%s' % network.key):
             continue
+        else:
+            succeeded = True
 
         url_parameters = {
             'mode': 'open_network',
@@ -47,4 +51,8 @@ def show_networks(addon, settings):
                                     totalItems=len(settings.networks))
 
     xbmcplugin.endOfDirectory(handle=addon.handle,
-                              succeeded=True)
+                              succeeded=succeeded)
+
+    if not succeeded:
+        message = "You have to select at least one network"
+        raise NoNetworksSelectedError(message)

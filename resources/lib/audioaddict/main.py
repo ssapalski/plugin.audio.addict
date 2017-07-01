@@ -1,6 +1,9 @@
 import xbmcgui
 
-from audioaddict.exceptions import AuthenticationError, EmptyCredentialsError
+from audioaddict.exceptions import AuthenticationError, \
+                                   EmptyCredentialsError, \
+                                   NoNetworksSelectedError
+
 from audioaddict.resources import get_welcome_text
 from audioaddict.settings import Settings
 from audioaddict.networks import show_networks
@@ -38,7 +41,7 @@ def run_addon(addon_url, addon_handle, addon_args):
     except EmptyCredentialsError as e:
         dialog = TextViewer(header='Welcome!', text=get_welcome_text(addon))
         dialog.doModal()
-    except AuthenticationError as e:
+    except (AuthenticationError, NoNetworksSelectedError) as e:
         dialog = xbmcgui.Dialog()
-        dialog.ok('Authentication error', e.message)
+        dialog.ok('Error', e.message)
         addon.openSettings()
