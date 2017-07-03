@@ -1,3 +1,8 @@
+"""
+    plugin.audio.addict
+    Unofficial addon for the AudioAddict network of radio streams.
+"""
+
 import urlparse
 import sys
 import os
