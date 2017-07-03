@@ -8,7 +8,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.join(sys.path[0], 'resources', 'lib'))
-import audioaddict
+import audioaddict  # pylint: disable=wrong-import-position
 
 
 def parse_addon_args(query_string):
