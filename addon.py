@@ -62,6 +62,7 @@ def parse_addon_args(query_string):
 
 
 def main():
+    """addon entry point"""
     addon_url = sys.argv[0]
     addon_handle = int(sys.argv[1])
     addon_args = parse_addon_args(sys.argv[2])
