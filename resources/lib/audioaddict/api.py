@@ -1,15 +1,43 @@
+"""
+    audioadditc.api
+    Utility classes for accessing the AudioAddict API.
+"""
+
 import requests
 from audioaddict.exceptions import AuthenticationError
 
 
 class AudioAddictApi(object):
+    """AudioAddict API.
+
+    Args:
+        network_key (str): The network to operate with
+
+    """
+
     def __init__(self, network_key):
         self._base_url = "api.audioaddict.com/v1/%s" % network_key
 
     def authenticate(self, username, password):
-        """
-        authenticate with the current network and return the listen_key along
-        with other network specific authentication information.
+        """Authenticate with the current network.
+
+        Make an authentication request to retrieve user specific data which is
+        needed for other API calls to work. Specifically this API will return
+        the listen_key.
+
+        Args:
+            username (str): The username -> e-mail.
+            password (str): The password.
+
+        Returns:
+            dict: Authentication data.
+
+        Raises:
+            audioaddict.exceptions.AuthenticationError:
+                If authentication fails due to invalid credentials.
+
+            requests.HTTPError: For any HTTP related error.
+
         """
         r = requests.post("https://%s/members/authenticate" % self._base_url,
                           params={'username': username, 'password': password})
@@ -41,9 +69,16 @@ class AudioAddictApi(object):
         return r.json()
 
     def channels(self):
-        """
-        return list of supported channels of this network with extended channel
-        information
+        """Return channels.
+
+        Return a list of supported channels with extended channel information.
+
+        Note:
+            The result list is sorted ascending by channel_key.
+
+        Raises:
+            requests.HTTPError: For any HTTP related error.
+
         """
         channel_keys = self._get_channel_keys()
         channel_info = self._get_channel_info()
@@ -52,8 +87,21 @@ class AudioAddictApi(object):
         return sorted(channels, key=lambda channel: channel['key'])
 
     def playlist(self, stream_key, channel_key, listen_key):
-        """
-        return channnel playlist
+        """Return channnel playlist.
+
+        Return a playlist specific to a channel and stream quality.
+
+        Args:
+            stream_key (str): The stream_key specifying the quality.
+            channel_key (str): The channel_key.
+            listen_key (str): The listen_key.
+
+        Returns:
+            list: list of channels, each item is a dictionary.
+
+        Raises:
+            requests.HTTPError: For any HTTP related error.
+
         """
         r = requests.get("http://%s/listen/%s/%s?listen_key=%s" %
                          (self._base_url, stream_key, channel_key, listen_key))
