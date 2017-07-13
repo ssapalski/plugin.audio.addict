@@ -2,8 +2,12 @@
 <settings>
     <category label="Account">
         <setting type="lsep" label="Credentials"/>
-        <setting id="username" type="text" label="username"/>
-        <setting id="password" type="text" label="password" option="hidden"/>
+        <setting id="use_primary_auth" label="login with username/password" type="bool" default="true"/>
+        <setting type="sep"/>
+        <setting id="username" type="text" label="username" enable="eq(-2,true)"/>
+        <setting id="password" type="text" label="password" option="hidden" enable="eq(-3,true)"/>
+        <setting type="sep"/>
+        <setting id="listen_key" type="text" label="listen key" enable="eq(-5,false)"/>
 
         <setting type="lsep" label="Options"/>
         <setting id="premium" label="premium" type="bool" default="false"/>
