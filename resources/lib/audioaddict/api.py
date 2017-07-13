@@ -4,7 +4,8 @@
 """
 
 import requests
-from audioaddict.exceptions import AuthenticationError
+from audioaddict.exceptions import AuthenticationError, \
+                                   ListenKeyError
 
 
 class AudioAddictApi(object):
@@ -105,6 +106,10 @@ class AudioAddictApi(object):
         """
         r = requests.get("http://%s/listen/%s/%s?listen_key=%s" %
                          (self._base_url, stream_key, channel_key, listen_key))
-        r.raise_for_status()
+
+        if r.status_code == 403:
+            raise ListenKeyError("listen key is invalid")
+        else:
+            r.raise_for_status()
 
         return r.json()
