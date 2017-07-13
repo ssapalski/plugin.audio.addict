@@ -8,11 +8,19 @@ except ImportError:
     import json
 
 
-def get_addon_path(addon):
-    kodi_path = addon.getAddonInfo('path')
+def get_translated_kodi_path(addon, id_):
+    kodi_path = addon.getAddonInfo(id_)
     real_path = xbmc.translatePath(kodi_path).decode('utf-8')
 
     return real_path
+
+
+def get_profile_path(addon):
+    return get_translated_kodi_path(addon, 'profile')
+
+
+def get_addon_path(addon):
+    return get_translated_kodi_path(addon, 'path')
 
 
 def get_data_path(addon):
