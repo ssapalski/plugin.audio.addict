@@ -12,3 +12,7 @@ class EmptyCredentialsError(AudioAddictException):
 
 class NoNetworksSelectedError(AudioAddictException):
     pass
+
+
+class ListenKeyError(AudioAddictException):
+    pass
