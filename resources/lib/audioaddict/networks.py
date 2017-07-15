@@ -1,7 +1,6 @@
 import xbmcgui
 import xbmcplugin
 
-from audioaddict.api import AudioAddictApi
 from audioaddict.exceptions import NoNetworksSelectedError
 
 
