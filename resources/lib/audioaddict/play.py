@@ -1,7 +1,9 @@
 import xbmcgui
 import xbmcplugin
-from audioaddict.api import AudioAddictApi
 
+from audioaddict.api import AudioAddictApi
+from audioaddict.auth import get_listen_key, invalidate_listen_key
+from audioaddict.exceptions import ListenKeyError
 
 def get_stream_key(addon, network):
     premium = addon.getBooleanSetting('premium')
@@ -16,8 +18,19 @@ def get_stream_key(addon, network):
 
 def get_playlist(addon, network_key, stream_key, channel_key):
     api = AudioAddictApi(network_key)
+    listen_key = get_listen_key(addon)
 
-    return api.playlist(stream_key, channel_key, addon.args['listen_key'])
+    try:
+        playlist = api.playlist(stream_key, channel_key, listen_key)
+    except ListenKeyError as e:
+        if addon.getSetting('use_primary_auth'):
+            invalidate_listen_key(addon)
+            listen_key = get_listen_key(addon)
+            playlist = api.playlist(stream_key, channel_key, listen_key)
+        else:
+            raise e
+
+    return playlist
 
 
 def play_stream(addon, settings):
