@@ -1,3 +1,10 @@
+v0.4.0 (2017-July-15)
+  + add optional authentication method with ListenKey
+  * cache authentication data
+  + automatically update authentication data if needed
+  * update welcome text
+  * send ListenKey via HTTPS to AudioAddict API
+
 v0.3.0 (2017-June-28)
   + add welcome text for new user describing
     how to create an account
