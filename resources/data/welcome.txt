@@ -1,4 +1,4 @@
-This seems to be the first time you are using the AudioAddict addon since you didn't specify a username/password in the addon settings. In order to listen to any stream you'll need an account at one of the following websites:
+This seems to be the first time you are using the AudioAddict addon since you didn't specify a username/password or 'ListenKey' in the addon settings. In order to listen to any stream you'll need an account at one of the following websites:
 
   [COLOR FF007EFF]http://www.di.fm[/COLOR]
   [COLOR FF007EFF]http://www.radiotunes.com[/COLOR]
@@ -6,4 +6,4 @@ This seems to be the first time you are using the AudioAddict addon since you di
   [COLOR FF007EFF]http://www.jazzradio.com[/COLOR]
   [COLOR FF007EFF]http://www.classicalradio.com[/COLOR]
 
-The account is free but mandatory and one account at any of these websites is enough and will be valid for all radio networks. After you have created an account, add your username/password in the addon settings.
+The account is free but mandatory and one account at any of these websites is enough and will be valid for all radio networks. After you have created an account, add your username/password or 'ListenKey' in the addon settings.
