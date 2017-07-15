@@ -32,8 +32,10 @@ zip -r plugin.audio.addict.zip plugin.audio.addict -x "*git*"
 # Settings
 You can customize the addon via the following settings:
   * **Account**
+    * **login with username/password** if 'false' login with 'listen key'
     * **username** the username (e-mail) of your account
     * **password** the password of your account
+    * **listen key** the 'listen key' of your account
     * **premium** activate premium streams (higher audio quality / no commercials)
   * **Networks**
     * activate/deactivate networks you like/dislike
