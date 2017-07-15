@@ -104,7 +104,7 @@ class AudioAddictApi(object):
             requests.HTTPError: For any HTTP related error.
 
         """
-        r = requests.get("http://%s/listen/%s/%s?listen_key=%s" %
+        r = requests.get("https://%s/listen/%s/%s?listen_key=%s" %
                          (self._base_url, stream_key, channel_key, listen_key))
 
         if r.status_code == 403:
