@@ -35,8 +35,7 @@ def show_channels(addon, settings):
         url_parameters = {
             'mode': 'play_stream',
             'network_key': network.key,
-            'channel_key': channel['key'],
-            'listen_key': addon.args['listen_key']
+            'channel_key': channel['key']
         }
 
         stream_url = addon.buildUrl(url_parameters)
