@@ -7,7 +7,7 @@
 ##### [Kodi](http://www.kodi.tv) audio addon for the AudioAddict family of radio channels.
 
 ![](https://img.shields.io/github/release/ssapalski/plugin.audio.addict/all.svg)
-[![Codacy branch grade](https://img.shields.io/codacy/grade/ddf485c1a18845e2a7c231cca5bbe92a/alpha.svg)]()
+![](https://img.shields.io/codacy/grade/ddf485c1a18845e2a7c231cca5bbe92a/alpha.svg)
 ![](https://img.shields.io/github/license/ssapalski/plugin.audio.addict.svg)
 
 This addon provides more than 200 specialized radio channels ranging from electronic music to classical tunes. Supported AudioAddict radio networks are:
