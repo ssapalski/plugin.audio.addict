@@ -23,23 +23,15 @@ class AudioAddictApi(object):
 
         return r.json()
 
-    def _get_channel_keys(self):
-        r = requests.get("http://%s/listen/channels" % self._base_url)
-        r.raise_for_status()
-
-        return [x['key'] for x in r.json()]
-
-    def _get_channel_info(self):
+    def channels(self):
         r = requests.get("http://%s/channels" % self._base_url)
         r.raise_for_status()
 
-        return r.json()
+        channels = []
+        for channel in r.json():
+            if not channel['name'].startswith('X'):
+                channels.append(channel)
 
-    def channels(self):
-        channel_keys = self._get_channel_keys()
-        channel_info = self._get_channel_info()
-
-        channels = [x for x in channel_info if x['key'] in channel_keys]
         return sorted(channels, key=lambda channel: channel['key'])
 
     def playlist(self, stream_key, channel_key, listen_key):
