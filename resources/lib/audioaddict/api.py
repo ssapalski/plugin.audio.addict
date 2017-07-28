@@ -21,7 +21,7 @@ class AudioAddictApi(object):
         else:
             r.raise_for_status()
 
-        return r.json()
+        return User(r.json())
 
     def channels(self):
         r = requests.get("http://%s/channels" % self._base_url)
@@ -44,3 +44,12 @@ class AudioAddictApi(object):
             r.raise_for_status()
 
         return r.json()
+
+
+class User(object):
+    def __init__(self, parsed_json):
+        self._user = parsed_json
+
+    @property
+    def listen_key(self):
+        return self._user['listen_key']

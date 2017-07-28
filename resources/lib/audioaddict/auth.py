@@ -48,9 +48,9 @@ def get_listen_key(addon):
     cache.load()
 
     if not cache.listen_key:
-        auth = authenticate(addon)
+        user = authenticate(addon)
 
-        cache.listen_key = auth['listen_key']
+        cache.listen_key = user.listen_key
         cache.dump()
 
     return cache.listen_key
