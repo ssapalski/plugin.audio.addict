@@ -1,4 +1,3 @@
-import xbmcgui
 import xbmcplugin
 
 from audioaddict.api import AudioAddictApi
