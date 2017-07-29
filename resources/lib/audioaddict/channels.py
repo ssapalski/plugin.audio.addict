@@ -3,17 +3,9 @@ import xbmcplugin
 from audioaddict.api import AudioAddictApi
 
 
-def build_icon_url(channel):
-    icon_url = "http:%s" % channel['images']['default']
-    icon_url = icon_url.split('{')[0]
-
-    return icon_url
-
-
 def build_list_item(channel):
-    icon_url = build_icon_url(channel)
-    list_item = xbmcgui.ListItem(label=channel['name'],
-                                 thumbnailImage=icon_url)
+    list_item = xbmcgui.ListItem(label=channel.name,
+                                 thumbnailImage=channel.image_default())
 
     list_item.setProperty('isPlayable', 'true')
 
@@ -31,11 +23,12 @@ def show_channels(addon, settings):
     network = settings.get_network(addon.args['network_key'])
     channels = get_channels(network)
 
-    for channel in channels:
+    supported_channels = channels.supported()
+    for channel in supported_channels:
         url_parameters = {
             'mode': 'play_stream',
             'network_key': network.key,
-            'channel_key': channel['key']
+            'channel_key': channel.key
         }
 
         stream_url = addon.buildUrl(url_parameters)
@@ -45,6 +38,6 @@ def show_channels(addon, settings):
                                     url=stream_url,
                                     listitem=list_item,
                                     isFolder=False,
-                                    totalItems=len(channels))
+                                    totalItems=len(supported_channels))
 
     xbmcplugin.endOfDirectory(handle=addon.handle, succeeded=True)
