@@ -31,6 +31,12 @@ class AudioAddictApi(object):
 
         return Channels(channels)
 
+    def channel_by_id(self, id_):
+        r = requests.get("http://%s/channels/%s" % (self._base_url, id_))
+        r.raise_for_status()
+
+        return Channel(r.json())
+
     def playlist(self, stream_key, channel_key, listen_key):
         r = requests.get("https://%s/listen/%s/%s?listen_key=%s" %
                          (self._base_url, stream_key, channel_key, listen_key))
@@ -83,6 +89,10 @@ class Channel(object):
     @property
     def name(self):
         return self._channel['name']
+
+    @property
+    def id_(self):
+        return self._channel['id']
 
 
 def _create_channel_list(parsed_json):

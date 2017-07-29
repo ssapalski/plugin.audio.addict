@@ -3,6 +3,7 @@ import xbmcplugin
 
 from audioaddict.api import AudioAddictApi
 from audioaddict.auth import get_listen_key, invalidate_listen_key
+from audioaddict.channels import create_list_item
 from audioaddict.exceptions import ListenKeyError
 
 def get_stream_key(addon, network):
@@ -36,6 +37,7 @@ def get_playlist(addon, network_key, stream_key, channel_key):
 def play_stream(addon, settings):
     network_key = addon.args['network_key']
     channel_key = addon.args['channel_key']
+    channel_id = addon.args['channel_id']
 
     network = settings.get_network(network_key)
     stream_key = get_stream_key(addon, network)
@@ -45,5 +47,10 @@ def play_stream(addon, settings):
                                                   settings.user_agent,
                                                   network.referer)
 
-    list_item = xbmcgui.ListItem(path=stream_url)
+    api = AudioAddictApi(network_key)
+    channel = api.channel_by_id(channel_id)
+
+    list_item = create_list_item(channel)
+    list_item.setPath(stream_url)
+
     xbmcplugin.setResolvedUrl(addon.handle, True, list_item)

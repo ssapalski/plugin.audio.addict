@@ -4,8 +4,10 @@ from audioaddict.api import AudioAddictApi
 
 
 def create_list_item(channel):
+    image_url = channel.image_default()
     list_item = xbmcgui.ListItem(label=channel.name,
-                                 thumbnailImage=channel.image_default())
+                                 thumbnailImage=image_url,
+                                 iconImage=image_url)
 
     list_item.setProperty('isPlayable', 'true')
 
@@ -28,7 +30,8 @@ def show_channels(addon, settings):
         url_parameters = {
             'mode': 'play_stream',
             'network_key': network.key,
-            'channel_key': channel.key
+            'channel_key': channel.key,
+            'channel_id': channel.id_
         }
 
         stream_url = addon.createUrl(url_parameters)
