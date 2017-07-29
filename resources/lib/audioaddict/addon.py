@@ -13,7 +13,7 @@ class ExtendedAddon(xbmcaddon.Addon):
         self.handle = handle
         self.args = args
 
-    def buildUrl(self, params):
+    def createUrl(self, params):
         return self.url + '?' + urllib.urlencode(params)
 
     def getBooleanSetting(self, id_):

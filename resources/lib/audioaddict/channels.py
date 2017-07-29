@@ -3,7 +3,7 @@ import xbmcplugin
 from audioaddict.api import AudioAddictApi
 
 
-def build_list_item(channel):
+def create_list_item(channel):
     list_item = xbmcgui.ListItem(label=channel.name,
                                  thumbnailImage=channel.image_default())
 
@@ -31,8 +31,8 @@ def show_channels(addon, settings):
             'channel_key': channel.key
         }
 
-        stream_url = addon.buildUrl(url_parameters)
-        list_item = build_list_item(channel)
+        stream_url = addon.createUrl(url_parameters)
+        list_item = create_list_item(channel)
 
         xbmcplugin.addDirectoryItem(handle=addon.handle,
                                     url=stream_url,

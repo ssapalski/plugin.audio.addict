@@ -18,7 +18,7 @@ def show_networks(addon, settings):
         }
 
         list_item = xbmcgui.ListItem(label=network.display_name)
-        url = addon.buildUrl(url_parameters)
+        url = addon.createUrl(url_parameters)
         xbmcplugin.addDirectoryItem(handle=addon.handle,
                                     url=url,
                                     listitem=list_item,
