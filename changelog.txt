@@ -1,3 +1,7 @@
+v0.4.1 (2017-July-30)
+  * show channel art if channel is started via Yatse
+  * cleanup some API issues
+
 v0.4.0 (2017-July-15)
   + add optional authentication method with ListenKey
   * cache authentication data

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.audio.addict" name="AudioAddict" version="0.4.0" provider-name="Samuel Sapalski (@leas)">
+<addon id="plugin.audio.addict" name="AudioAddict" version="0.4.1" provider-name="Samuel Sapalski (@leas)">
     <requires>
         <!-- Isengard 15.x -->
         <import addon="xbmc.python" version="2.20.0"/>
