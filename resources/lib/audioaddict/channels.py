@@ -21,7 +21,7 @@ def get_channels(network):
     return channels
 
 
-def show_channels(addon, settings):
+def add_channels_to_kodi_directory(addon, settings):
     network = settings.get_network(addon.args['network_key'])
     channels = get_channels(network)
 
@@ -44,3 +44,6 @@ def show_channels(addon, settings):
                                     totalItems=len(supported_channels))
 
     xbmcplugin.endOfDirectory(handle=addon.handle, succeeded=True)
+
+def show_channels(addon, settings):
+    add_channels_to_kodi_directory(addon, settings)
