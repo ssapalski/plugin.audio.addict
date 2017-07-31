@@ -45,5 +45,16 @@ def add_channels_to_kodi_directory(addon, settings):
 
     xbmcplugin.endOfDirectory(handle=addon.handle, succeeded=True)
 
+
+def add_channel_sort_methods(addon):
+    sort_methods = [
+        xbmcplugin.SORT_METHOD_LABEL,
+    ]
+
+    for sort_method in sort_methods:
+        xbmcplugin.addSortMethod(addon.handle, sort_method)
+
+
 def show_channels(addon, settings):
+    add_channel_sort_methods(addon)
     add_channels_to_kodi_directory(addon, settings)
