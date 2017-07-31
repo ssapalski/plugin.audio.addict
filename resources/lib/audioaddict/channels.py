@@ -25,7 +25,7 @@ def add_channels_to_kodi_directory(addon, settings):
     network = settings.get_network(addon.args['network_key'])
     channels = get_channels(network)
 
-    supported_channels = sorted(channels.supported(), key=lambda x: x.key)
+    supported_channels = channels.supported()
     for channel in supported_channels:
         url_parameters = {
             'mode': 'play_stream',
