@@ -56,15 +56,6 @@ def get_listen_key(addon):
     return cache.listen_key
 
 
-def invalidate_listen_key(addon):
-    """Invalidate the listen key."""
-    cache = AuthenticationCache(get_profile_path(addon))
-    cache.load()
-
-    cache.listen_key = None
-    cache.dump()
-
-
 def authenticate(addon):
     """Authenticate and return authentication data."""
     username = addon.getSetting('username')
@@ -73,6 +64,15 @@ def authenticate(addon):
     api = AudioAddictApi(addon.args['network_key'])
 
     return api.authenticate(username, password)
+
+
+def invalidate_listen_key(addon):
+    """Invalidate the listen key."""
+    cache = AuthenticationCache(get_profile_path(addon))
+    cache.load()
+
+    cache.listen_key = None
+    cache.dump()
 
 
 def credentials_empty(addon):

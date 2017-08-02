@@ -15,18 +15,6 @@ except ImportError:
     import json
 
 
-def load_settings(settings_path):
-    with open(settings_path, 'r') as f:
-        return json.loads(f.read())
-
-
-def get_settings_path(addon):
-    kodi_path = addon.getAddonInfo('path')
-    real_path = xbmc.translatePath(kodi_path).decode('utf-8')
-
-    return os.path.join(real_path, 'resources', 'data', 'settings.json')
-
-
 class Settings(object):
     def __init__(self, addon):
         self._settings = get_raw_settings(addon)
@@ -57,16 +45,16 @@ class NetworkSettings(object):
         self.key = key
 
     @property
+    def referer(self):
+        return "http://www.%s/" % self.domain
+
+    @property
     def domain(self):
         return self._network['domain']
 
     @property
     def display_name(self):
         return self._network['display_name']
-
-    @property
-    def referer(self):
-        return "http://www.%s/" % self.domain
 
     @property
     def sort_key(self):
@@ -79,3 +67,15 @@ class NetworkSettings(object):
             stream_key = self._streams['public'][quality_key]
 
         return stream_key
+
+
+def load_settings(settings_path):
+    with open(settings_path, 'r') as f:
+        return json.loads(f.read())
+
+
+def get_settings_path(addon):
+    kodi_path = addon.getAddonInfo('path')
+    real_path = xbmc.translatePath(kodi_path).decode('utf-8')
+
+    return os.path.join(real_path, 'resources', 'data', 'settings.json')

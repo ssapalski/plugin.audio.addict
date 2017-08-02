@@ -20,12 +20,19 @@ from audioaddict.play import play_stream
 from audioaddict.gui import TextViewer
 
 
-def set_addon_defaults(addon):
-    if not addon.getSetting('quality_free'):
-        addon.setSetting('quality_free', 'moderate')
+def run_addon(addon_url, addon_handle, addon_args):
+    try:
+        addon = ExtendedAddon(addon_url, addon_handle, addon_args)
+        settings = Settings(addon)
 
-    if not addon.getSetting('quality_premium'):
-        addon.setSetting('quality_premium', 'high')
+        main(addon, settings)
+    except EmptyCredentialsError as e:
+        dialog = TextViewer(header='Welcome!', text=get_welcome_text(addon))
+        dialog.doModal()
+    except (AuthenticationError, NoNetworksSelectedError, ListenKeyError) as e:
+        dialog = xbmcgui.Dialog()
+        dialog.ok('Error', e.message)
+        addon.openSettings()
 
 
 def main(addon, settings):
@@ -42,16 +49,9 @@ def main(addon, settings):
         play_stream(addon, settings)
 
 
-def run_addon(addon_url, addon_handle, addon_args):
-    try:
-        addon = ExtendedAddon(addon_url, addon_handle, addon_args)
-        settings = Settings(addon)
+def set_addon_defaults(addon):
+    if not addon.getSetting('quality_free'):
+        addon.setSetting('quality_free', 'moderate')
 
-        main(addon, settings)
-    except EmptyCredentialsError as e:
-        dialog = TextViewer(header='Welcome!', text=get_welcome_text(addon))
-        dialog.doModal()
-    except (AuthenticationError, NoNetworksSelectedError, ListenKeyError) as e:
-        dialog = xbmcgui.Dialog()
-        dialog.ok('Error', e.message)
-        addon.openSettings()
+    if not addon.getSetting('quality_premium'):
+        addon.setSetting('quality_premium', 'high')

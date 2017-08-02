@@ -8,22 +8,18 @@ import xbmcplugin
 from audioaddict.api import AudioAddictApi
 
 
-def create_list_item(channel):
-    image_url = channel.image_default()
-    list_item = xbmcgui.ListItem(label=channel.name,
-                                 thumbnailImage=image_url,
-                                 iconImage=image_url)
-
-    list_item.setProperty('isPlayable', 'true')
-
-    return list_item
+def show_channels(addon, settings):
+    add_channel_sort_methods(addon)
+    add_channels_to_kodi_directory(addon, settings)
 
 
-def get_channels(network):
-    api = AudioAddictApi(network.key)
-    channels = api.channels()
+def add_channel_sort_methods(addon):
+    sort_methods = [
+        xbmcplugin.SORT_METHOD_LABEL,
+    ]
 
-    return channels
+    for sort_method in sort_methods:
+        xbmcplugin.addSortMethod(addon.handle, sort_method)
 
 
 def add_channels_to_kodi_directory(addon, settings):
@@ -51,15 +47,19 @@ def add_channels_to_kodi_directory(addon, settings):
     xbmcplugin.endOfDirectory(handle=addon.handle, succeeded=True)
 
 
-def add_channel_sort_methods(addon):
-    sort_methods = [
-        xbmcplugin.SORT_METHOD_LABEL,
-    ]
+def get_channels(network):
+    api = AudioAddictApi(network.key)
+    channels = api.channels()
 
-    for sort_method in sort_methods:
-        xbmcplugin.addSortMethod(addon.handle, sort_method)
+    return channels
 
 
-def show_channels(addon, settings):
-    add_channel_sort_methods(addon)
-    add_channels_to_kodi_directory(addon, settings)
+def create_list_item(channel):
+    image_url = channel.image_default()
+    list_item = xbmcgui.ListItem(label=channel.name,
+                                 thumbnailImage=image_url,
+                                 iconImage=image_url)
+
+    list_item.setProperty('isPlayable', 'true')
+
+    return list_item
