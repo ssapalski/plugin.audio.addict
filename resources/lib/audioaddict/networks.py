@@ -1,3 +1,8 @@
+"""
+    audioaddict.networks
+    Functionality centered around networks presentation in Kodi.
+"""
+
 import xbmcgui
 import xbmcplugin
 

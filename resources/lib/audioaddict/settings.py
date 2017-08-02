@@ -1,3 +1,8 @@
+"""
+    audioaddict.settings
+    Functionality for internal settings.
+"""
+
 import os
 import xbmc
 

@@ -1,3 +1,8 @@
+"""
+    audioaddict.play
+    Functionality triggered if the user starts/plays a channel.
+"""
+
 import xbmcplugin
 
 from audioaddict.api import AudioAddictApi

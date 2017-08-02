@@ -1,3 +1,8 @@
+"""
+    audioaddict.channels
+    Functionality centered around channel presentation in Kodi.
+"""
+
 import xbmcgui
 import xbmcplugin
 from audioaddict.api import AudioAddictApi

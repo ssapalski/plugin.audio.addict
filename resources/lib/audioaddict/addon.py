@@ -1,3 +1,8 @@
+"""
+    audioaddict.addon
+    Extension of xbmcaddon.Addon with useful attributes and methods.
+"""
+
 import urllib
 import xbmcaddon
 

@@ -1,3 +1,8 @@
+"""
+    audioaddict.main
+    The main entrance point of the addon.
+"""
+
 import xbmcgui
 
 from audioaddict.exceptions import AuthenticationError, \

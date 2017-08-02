@@ -1,3 +1,8 @@
+"""
+    audioaddict.resources
+    Functionality related to internal resources like settings, paths, ...
+"""
+
 import os
 import xbmc
 

@@ -1,3 +1,9 @@
+"""
+    audioaddict.gui
+    Classes to provide GUI elements not available in all versions of the Kodi
+    Python API.
+"""
+
 import xbmcgui
 
 

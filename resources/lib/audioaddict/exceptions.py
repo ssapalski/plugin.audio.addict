@@ -1,3 +1,8 @@
+"""
+    audioaddict.exceptions
+    Simple exceptions specific to this addon.
+"""
+
 class AudioAddictException(Exception):
     pass
 
