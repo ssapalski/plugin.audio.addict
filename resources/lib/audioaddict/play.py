@@ -73,8 +73,8 @@ def get_valid_channel_url(playlist):
 
 def server_available(domain):
     try:
-        response = requests.head("http://%s" % domain)
-    except requests.exceptions.ConnectionError as e:
+        requests.head("http://%s" % domain)
+    except requests.exceptions.ConnectionError:
         return False
 
     return True
