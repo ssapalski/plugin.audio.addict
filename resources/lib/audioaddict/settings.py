@@ -4,15 +4,10 @@
 """
 
 import os
+import json
 import xbmc
 
 from audioaddict.resources import get_raw_settings
-
-# Just in case we are running on python 2.6, simplejson will be faster
-try:
-    import simplejson as json
-except ImportError:
-    import json
 
 
 class Settings(object):

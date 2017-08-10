@@ -4,13 +4,8 @@
 """
 
 import os
+import json
 import xbmc
-
-# Just in case we are running on python 2.6, simplejson will be faster
-try:
-    import simplejson as json
-except ImportError:
-    import json
 
 
 def get_welcome_text(addon):
