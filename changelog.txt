@@ -1,3 +1,8 @@
+v0.5.0 (2017-August-10)
+  + add channel sorting by name
+  + add channel sorting by creation date
+  * fix issue with non-working channels (playlist verification)
+
 v0.4.1 (2017-July-30)
   * show channel art if channel is started via Yatse
   * cleanup some API issues
