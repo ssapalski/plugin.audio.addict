@@ -3,6 +3,8 @@
     Functionality triggered if the user starts/plays a channel.
 """
 
+import urlparse
+import requests
 import xbmcplugin
 
 from audioaddict.api import AudioAddictApi
@@ -20,7 +22,8 @@ def play_stream(addon, settings):
     stream_key = get_stream_key(addon, network)
     playlist = get_playlist(addon, network_key, stream_key, channel_key)
 
-    stream_url = "%s|User-Agent=%s&Referer=%s" % (playlist[0],
+    channel_url = get_valid_channel_url(playlist)
+    stream_url = "%s|User-Agent=%s&Referer=%s" % (channel_url,
                                                   settings.user_agent,
                                                   network.referer)
 
@@ -59,3 +62,19 @@ def get_playlist(addon, network_key, stream_key, channel_key):
             raise e
 
     return playlist
+
+
+def get_valid_channel_url(playlist):
+    for channel_url in playlist:
+        parsed_url = urlparse.urlparse(channel_url)
+        if server_available(parsed_url.netloc):
+            return channel_url
+
+
+def server_available(domain):
+    try:
+        response = requests.head("http://%s" % domain)
+    except requests.exceptions.ConnectionError as e:
+        return False
+
+    return True
