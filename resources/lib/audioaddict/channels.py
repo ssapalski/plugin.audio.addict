@@ -16,6 +16,7 @@ def show_channels(addon, settings):
 def add_channel_sort_methods(addon):
     sort_methods = [
         xbmcplugin.SORT_METHOD_LABEL,
+        xbmcplugin.SORT_METHOD_DATEADDED,
     ]
 
     for sort_method in sort_methods:
@@ -60,6 +61,10 @@ def create_list_item(channel):
                                  thumbnailImage=image_url,
                                  iconImage=image_url)
 
+    date, time = channel.creation_timestamp.split('T')
+    timestamp = "%s %s" % (date, time.split('-')[0])
+
     list_item.setProperty('isPlayable', 'true')
+    list_item.setInfo('video', {'dateadded': timestamp})
 
     return list_item

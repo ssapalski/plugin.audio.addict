@@ -94,6 +94,10 @@ class Channel(object):
     def id_(self):
         return self._channel['id']
 
+    @property
+    def creation_timestamp(self):
+        return self._channel['created_at']
+
 
 def _create_channel_list(parsed_json):
     channels = []
