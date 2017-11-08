@@ -1,3 +1,6 @@
+v0.5.1 (2017-November-08)
+  * better detection for disabled channels
+
 v0.5.0 (2017-August-10)
   + add channel sorting by name
   + add channel sorting by creation date
