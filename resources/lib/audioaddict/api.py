@@ -80,6 +80,9 @@ class Channel(object):
         if self.name.startswith('X'):
             return False
 
+        if not self._channel['images']:
+            return False
+
         return True
 
     @property
