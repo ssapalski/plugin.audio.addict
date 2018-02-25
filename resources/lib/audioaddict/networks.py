@@ -10,12 +10,13 @@ from audioaddict.exceptions import NoNetworksSelectedError
 
 
 def show_networks(addon, settings):
-    succeeded = False
+    if num_activated_networks(addon, settings) == 0:
+        message = "You have to select at least one network"
+        raise NoNetworksSelectedError(message)
+
     for network in settings.networks:
         if not addon.getBooleanSetting('activate_%s' % network.key):
             continue
-        else:
-            succeeded = True
 
         url_parameters = {
             'mode': 'open_network',
@@ -31,8 +32,13 @@ def show_networks(addon, settings):
                                     totalItems=len(settings.networks))
 
     xbmcplugin.endOfDirectory(handle=addon.handle,
-                              succeeded=succeeded)
+                              succeeded=True)
 
-    if not succeeded:
-        message = "You have to select at least one network"
-        raise NoNetworksSelectedError(message)
+
+def num_activated_networks(addon, settings):
+    count = 0
+    for network in settings.networks:
+        if addon.getBooleanSetting('activate_%s' % network.key):
+            count += 1
+
+    return count
