@@ -12,12 +12,21 @@ class AudioAddictApi(object):
         self._base_url = "api.audioaddict.com/v1/%s" % network_key
 
     def channels(self):
-        r = requests.get("http://%s/channels" % self._base_url)
-        r.raise_for_status()
+        r1 = requests.get("http://%s/channels" % self._base_url)
+        r1.raise_for_status()
 
-        channels = _create_channel_list(r.json())
+        r2 = requests.get("http://%s/listen/channels" % self._base_url)
+        r2.raise_for_status()
 
-        return Channels(channels)
+        all_channels = r1.json()
+        listen_channel_keys = [x['key'] for x in r2.json()]
+
+        channels = []
+        for channel in all_channels:
+            if channel['key'] in listen_channel_keys:
+                channels.append(Channel(channel))
+
+        return channels
 
     def channel_by_key(self, key):
         r = requests.get("http://%s/channels/key/%s" % (self._base_url, key))
@@ -37,14 +46,6 @@ class AudioAddictApi(object):
         return r.json()
 
 
-class Channels(object):
-    def __init__(self, channels):
-        self._channels = channels
-
-    def supported(self):
-        return [x for x in self._channels if x.supported()]
-
-
 class Channel(object):
     def __init__(self, parsed_json):
         self._channel = parsed_json
@@ -54,15 +55,6 @@ class Channel(object):
         url = url.split('{')[0]
 
         return url
-
-    def supported(self):
-        if self.name.startswith('X'):
-            return False
-
-        if not self._channel['images']:
-            return False
-
-        return True
 
     @property
     def key(self):
@@ -75,11 +67,3 @@ class Channel(object):
     @property
     def creation_timestamp(self):
         return self._channel['created_at']
-
-
-def _create_channel_list(parsed_json):
-    channels = []
-    for channel in parsed_json:
-        channels.append(Channel(channel))
-
-    return channels

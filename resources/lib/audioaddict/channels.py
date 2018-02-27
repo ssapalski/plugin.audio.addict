@@ -27,8 +27,7 @@ def add_channels_to_kodi_directory(addon, settings):
     network = settings.get_network(addon.args['network_key'])
     channels = get_channels(network)
 
-    supported_channels = channels.supported()
-    for channel in supported_channels:
+    for channel in channels:
         url_parameters = {
             'mode': 'play_stream',
             'network_key': network.key,
@@ -42,7 +41,7 @@ def add_channels_to_kodi_directory(addon, settings):
                                     url=stream_url,
                                     listitem=list_item,
                                     isFolder=False,
-                                    totalItems=len(supported_channels))
+                                    totalItems=len(channels))
 
     xbmcplugin.endOfDirectory(handle=addon.handle, succeeded=True)
 
