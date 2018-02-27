@@ -14,7 +14,6 @@ from audioaddict.channels import create_list_item
 def play_stream(addon, settings):
     network_key = addon.args['network_key']
     channel_key = addon.args['channel_key']
-    channel_id = addon.args['channel_id']
 
     network = settings.get_network(network_key)
 
@@ -24,7 +23,7 @@ def play_stream(addon, settings):
 
     api = AudioAddictApi(network_key)
     playlist = api.playlist(stream_key, channel_key, listen_key)
-    channel = api.channel_by_id(channel_id)
+    channel = api.channel_by_key(channel_key)
 
     channel_url = get_valid_channel_url(playlist)
     stream_url = "%s|User-Agent=%s&Referer=%s" % (channel_url,

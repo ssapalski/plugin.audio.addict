@@ -32,8 +32,7 @@ def add_channels_to_kodi_directory(addon, settings):
         url_parameters = {
             'mode': 'play_stream',
             'network_key': network.key,
-            'channel_key': channel.key,
-            'channel_id': channel.id_
+            'channel_key': channel.key
         }
 
         stream_url = addon.createUrl(url_parameters)

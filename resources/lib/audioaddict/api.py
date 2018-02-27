@@ -19,8 +19,8 @@ class AudioAddictApi(object):
 
         return Channels(channels)
 
-    def channel_by_id(self, id_):
-        r = requests.get("http://%s/channels/%s" % (self._base_url, id_))
+    def channel_by_key(self, key):
+        r = requests.get("http://%s/channels/key/%s" % (self._base_url, key))
         r.raise_for_status()
 
         return Channel(r.json())
@@ -71,10 +71,6 @@ class Channel(object):
     @property
     def name(self):
         return self._channel['name']
-
-    @property
-    def id_(self):
-        return self._channel['id']
 
     @property
     def creation_timestamp(self):
