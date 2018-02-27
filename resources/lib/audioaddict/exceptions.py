@@ -16,5 +16,9 @@ class NoNetworksSelectedError(AudioAddictException):
     pass
 
 
+class NoStreamingServerOnlineError(AudioAddictException):
+    pass
+
+
 class ListenKeyError(AudioAddictException):
     pass

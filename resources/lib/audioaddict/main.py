@@ -7,6 +7,7 @@ import xbmcgui
 
 from audioaddict.exceptions import EmptyCredentialsError, \
                                    NoNetworksSelectedError, \
+                                   NoStreamingServerOnlineError, \
                                    ListenKeyError
 
 from audioaddict.resources import get_welcome_text
@@ -35,6 +36,10 @@ def run_addon(addon_url, addon_handle, addon_args):
         dialog = xbmcgui.Dialog()
         dialog.ok('Error', "You didn't select any network in the addon "
                            "settings but you have to select at least one!")
+    except NoStreamingServerOnlineError:
+        dialog = xbmcgui.Dialog()
+        dialog.ok('Error', "There is no streaming server online for the "
+                           "current channel!")
 
 
 def main(addon, settings):

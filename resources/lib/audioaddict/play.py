@@ -9,6 +9,7 @@ import xbmcplugin
 
 from audioaddict.api import AudioAddictApi
 from audioaddict.channels import create_list_item
+from audioaddict.exceptions import NoStreamingServerOnlineError
 
 
 def play_stream(addon, settings):
@@ -39,11 +40,13 @@ def play_stream(addon, settings):
 def get_valid_channel_url(playlist):
     for channel_url in playlist:
         parsed_url = urlparse.urlparse(channel_url)
-        if server_available(parsed_url.netloc):
+        if server_online(parsed_url.netloc):
             return channel_url
 
+    raise NoStreamingServerOnlineError()
 
-def server_available(domain):
+
+def server_online(domain):
     try:
         requests.head("http://%s" % domain)
     except requests.exceptions.ConnectionError:
