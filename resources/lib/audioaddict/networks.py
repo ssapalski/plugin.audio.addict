@@ -10,9 +10,6 @@ from audioaddict.exceptions import NoNetworksSelectedError
 
 
 def show_networks(addon, settings):
-    if num_activated_networks(addon, settings) == 0:
-        raise NoNetworksSelectedError()
-
     for network in settings.networks:
         if not addon.getBooleanSetting('activate_%s' % network.key):
             continue
@@ -34,10 +31,19 @@ def show_networks(addon, settings):
                               succeeded=True)
 
 
-def num_activated_networks(addon, settings):
+def count_active_networks(addon, settings):
     count = 0
     for network in settings.networks:
         if addon.getBooleanSetting('activate_%s' % network.key):
             count += 1
 
     return count
+
+
+def get_first_active_network_key(addon, settings):
+    for network in settings.networks:
+        if addon.getBooleanSetting('activate_%s' % network.key):
+            return network.key
+
+    raise RuntimeError("Don't call this function if there is no "
+                       "network active")

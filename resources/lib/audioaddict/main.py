@@ -12,7 +12,9 @@ from audioaddict.exceptions import EmptyCredentialsError, \
 
 from audioaddict.resources import get_welcome_text
 from audioaddict.settings import Settings
-from audioaddict.networks import show_networks
+from audioaddict.networks import show_networks, \
+                                 count_active_networks, \
+                                 get_first_active_network_key
 from audioaddict.channels import show_channels
 from audioaddict.addon import ExtendedAddon
 from audioaddict.play import play_stream
@@ -49,7 +51,16 @@ def main(addon, settings):
         raise EmptyCredentialsError()
 
     if not addon.args:
-        show_networks(addon, settings)
+        active_networks = count_active_networks(addon, settings)
+        if active_networks == 0:
+            raise NoNetworksSelectedError()
+        elif active_networks == 1:
+            addon.args = {
+                'network_key': get_first_active_network_key(addon, settings)
+            }
+            show_channels(addon, settings)
+        else:
+            show_networks(addon, settings)
     elif addon.args.get('mode') == 'open_network':
         show_channels(addon, settings)
     elif addon.args.get('mode') == 'play_stream':
