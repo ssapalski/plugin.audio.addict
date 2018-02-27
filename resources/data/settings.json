@@ -1,10 +1,12 @@
 {
-    "stream_url": {
+    "http": {
         "user_agent": "Mozilla/5.0"
     },
-    "streams": {
-        "public": {"low": "android_low", "moderate": "android"},
-        "premium": {"low": "premium_low", "moderate": "premium", "medium": "premium_medium", "high": "premium_high"}
+    "quality": {
+        "low": "premium_low",
+        "moderate": "premium",
+        "medium": "premium_medium",
+        "high": "premium_high"
     },
     "networks": {
         "di": {

@@ -4,24 +4,12 @@
 """
 
 import requests
-from audioaddict.exceptions import AuthenticationError, \
-                                   ListenKeyError
+from audioaddict.exceptions import ListenKeyError
 
 
 class AudioAddictApi(object):
     def __init__(self, network_key):
         self._base_url = "api.audioaddict.com/v1/%s" % network_key
-
-    def authenticate(self, username, password):
-        r = requests.post("https://%s/members/authenticate" % self._base_url,
-                          params={'username': username, 'password': password})
-
-        if r.status_code == 403:
-            raise AuthenticationError("username and password do not match")
-        else:
-            r.raise_for_status()
-
-        return User(r.json())
 
     def channels(self):
         r = requests.get("http://%s/channels" % self._base_url)
@@ -42,20 +30,11 @@ class AudioAddictApi(object):
                          (self._base_url, stream_key, channel_key, listen_key))
 
         if r.status_code == 403:
-            raise ListenKeyError("listen key is invalid")
+            raise ListenKeyError()
         else:
             r.raise_for_status()
 
         return r.json()
-
-
-class User(object):
-    def __init__(self, parsed_json):
-        self._user = parsed_json
-
-    @property
-    def listen_key(self):
-        return self._user['listen_key']
 
 
 class Channels(object):

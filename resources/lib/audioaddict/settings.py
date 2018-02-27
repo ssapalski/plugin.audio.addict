@@ -16,12 +16,12 @@ class Settings(object):
 
     @property
     def user_agent(self):
-        return self._settings['stream_url']['user_agent']
+        return self._settings['http']['user_agent']
 
     def get_network(self, network_key):
         return NetworkSettings(network_key,
                                self._settings['networks'][network_key],
-                               self._settings['streams'])
+                               self._settings['quality'])
 
     @property
     def networks(self):
@@ -33,9 +33,9 @@ class Settings(object):
 
 
 class NetworkSettings(object):
-    def __init__(self, key, network, streams):
+    def __init__(self, key, network, quality):
         self._network = network
-        self._streams = streams
+        self._quality = quality
 
         self.key = key
 
@@ -55,13 +55,8 @@ class NetworkSettings(object):
     def sort_key(self):
         return self._network['sort_key']
 
-    def get_stream_key(self, quality_key, premium=False):
-        if premium:
-            stream_key = self._streams['premium'][quality_key]
-        else:
-            stream_key = self._streams['public'][quality_key]
-
-        return stream_key
+    def get_stream_key(self, quality_key):
+        return self._quality[quality_key]
 
 
 def load_settings(settings_path):

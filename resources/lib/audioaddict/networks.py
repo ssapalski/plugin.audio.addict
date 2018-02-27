@@ -11,8 +11,7 @@ from audioaddict.exceptions import NoNetworksSelectedError
 
 def show_networks(addon, settings):
     if num_activated_networks(addon, settings) == 0:
-        message = "You have to select at least one network"
-        raise NoNetworksSelectedError(message)
+        raise NoNetworksSelectedError()
 
     for network in settings.networks:
         if not addon.getBooleanSetting('activate_%s' % network.key):

@@ -12,7 +12,7 @@
         <platform>all</platform>
         <language>en</language>
         <summary lang="en">AudioAddict Network Radio</summary>
-        <description lang="en">The AudioAddict network provides a wide range of specialized radio stations, ranging from electronic music to classical tunes.[CR][CR]Supported radio networks:[CR]  DigitallyImported[CR]  RadioTunes[CR]  RockRadio[CR]  JazzRadio[CR]  ClassicalRadio[CR][CR]You'll need an account at one of the listed networks to use this addon and listen to the radio stations.</description>
+        <description lang="en">The AudioAddict network provides a wide range of specialized radio stations, ranging from electronic music to classical tunes.[CR][CR]Supported radio networks:[CR]  DigitallyImported[CR]  RadioTunes[CR]  RockRadio[CR]  JazzRadio[CR]  ClassicalRadio[CR][CR]You'll need a premium account at one of the listed networks to use this addon and listen to the radio stations.</description>
         <forum>https://forum.kodi.tv/showthread.php?tid=317155</forum>
         <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
         <source>https://github.com/ssapalski/plugin.audio.addict</source>
