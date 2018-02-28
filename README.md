@@ -26,36 +26,40 @@ Since this addon is currently not officially supported by Kodi you need to insta
 You have also the possibility to clone the repository, make modifications and create a 'zip' from the cloned sources:
 
 ```
-git clone -b alpha https://github.com/ssapalski/plugin.audio.addict.git
+git clone -b <branch_name> https://github.com/ssapalski/plugin.audio.addict.git
 zip -r plugin.audio.addict.zip plugin.audio.addict -x "*git*"
 ```
 
 # Settings
 You can customize the addon via the following settings:
-  * **Account**
-    * **login with username/password** if 'false' login with 'listen key'
-    * **username** the username (e-mail) of your account
-    * **password** the password of your account
-    * **listen key** the 'listen key' of your account
-    * **premium** activate premium streams (higher audio quality / no commercials)
-  * **Networks**
-    * activate/deactivate networks you like/dislike
-  * **Stream**
-    * quality: **free** quality level for free streams
-    * quality: **premium** quality level for premium streams
+  * **General**
+    * **Credentials**
+      * **Listen Key** the 'Listen Key' of your account
+    * **Streams**
+      * **Quality** quality level
+    * **Networks**
+      * **DigitallyImported** enable/disable network
+      * **RadioTunes** enable/disable network
+      * **RockRadio** enable/disable network
+      * **JazzRadio** enable/disable network
+      * **ClassicalRadio** enable/disable network
 
 # FAQ
 **Is an account needed?**
 
 Yes! An account is mandatory, without having one you won't be able to use the addon.
 
-**Do I need a premium account?**
+**Do I need a premium membership?**
 
-No! But if you want to listen to the channels without any interruption by commercials and with higher audio quality you should consider purchasing a premium account.
+Yes! You need to have a premium membership at one of the networks. Without a premium membership this addon will be useless for you.
 
 **Where to register?**
 
 You can do this at any of the networks web sites. Your account will be valid for all networks.
+
+**Where do I find my 'Listen Key'?**
+
+In the PlayerSettings for example here: [PlayerSettings](https://www.di.fm/settings)
 
 # Contributors
 
