@@ -1,3 +1,10 @@
+v0.6.0 (2018-February-28)
+  - drop public stream support
+  * improve supported channel detection
+  * improve error handling
+  * simplify settings
+  + bypass network list if only one network is activated
+
 v0.5.1 (2017-November-08)
   * better detection for disabled channels
 
