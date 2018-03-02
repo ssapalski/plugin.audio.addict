@@ -70,3 +70,6 @@ def main(addon, settings):
 def set_addon_defaults(addon):
     if not addon.getSetting('quality'):
         addon.setSetting('quality', 'high')
+
+    if not addon.getSetting('server'):
+        addon.setSetting('server', 'random')

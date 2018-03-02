@@ -5,6 +5,7 @@
         <setting id="listen_key" type="text" label="Listen Key"/>
         <setting type="lsep" label="Streams"/>
         <setting id="quality" type="select" label="Quality" values="low|moderate|medium|high"/>
+        <setting id="server" type="select" label="Server" values="prem1|prem2|prem3|prem4|random"/>
         <setting type="lsep" label="Networks"/>
         <setting id="activate_di" label="DigitallyImported" type="bool" default="true"/>
         <setting id="activate_radiotunes" label="RadioTunes" type="bool" default="true"/>
