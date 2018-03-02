@@ -6,8 +6,6 @@
 import xbmcgui
 import xbmcplugin
 
-from audioaddict.exceptions import NoNetworksSelectedError
-
 
 def show_networks(addon, settings):
     for network in settings.networks:
