@@ -2,7 +2,7 @@
 
 # plugin.audio.addict
 
-<img src="https://github.com/ssapalski/plugin.audio.addict/blob/alpha/icon.png?raw=true" width="256p" height="256px"/>
+<img src="https://github.com/ssapalski/plugin.audio.addict/blob/master/icon.png?raw=true" width="256p" height="256px"/>
 
 ##### [Kodi](http://www.kodi.tv) audio addon for the AudioAddict family of radio channels.
 
