@@ -1,3 +1,6 @@
+v0.6.1 (2018-July-11)
+  * fix Kodi 18 incompatibility
+
 v0.6.0 (2018-February-28)
   - drop public stream support
   * improve supported channel detection
