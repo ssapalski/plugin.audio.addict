@@ -7,7 +7,9 @@ import urlparse
 import sys
 import os
 
-sys.path.insert(0, os.path.join(sys.path[0], 'resources', 'lib'))
+TOPDIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(TOPDIR, 'resources', 'lib'))
+
 import audioaddict  # pylint: disable=wrong-import-position
 
 
