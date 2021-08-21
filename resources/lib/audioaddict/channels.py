@@ -3,9 +3,12 @@
     Functionality centered around channel presentation in Kodi.
 """
 
+from resources.lib.audioaddict.api import AudioAddictApi
+
 import xbmcgui
+
 import xbmcplugin
-from audioaddict.api import AudioAddictApi
+
 
 
 def show_channels(addon, settings):
@@ -55,12 +58,11 @@ def get_channels(network):
 
 def create_list_item(channel):
     image_url = channel.image_default()
-    list_item = xbmcgui.ListItem(label=channel.name,
-                                 thumbnailImage=image_url,
-                                 iconImage=image_url)
+    list_item = xbmcgui.ListItem(label=channel.name)
+    list_item.setArt({'thumb': image_url, 'icon': image_url})
 
     date, time = channel.creation_timestamp.split('T')
-    timestamp = "%s %s" % (date, time.split('-')[0])
+    timestamp = f'{date} {time.split("-")[0]}'
 
     list_item.setProperty('isPlayable', 'true')
     list_item.setInfo('video', {'dateadded': timestamp})

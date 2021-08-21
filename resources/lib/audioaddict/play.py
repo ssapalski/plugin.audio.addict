@@ -3,13 +3,15 @@
     Functionality triggered if the user starts/plays a channel.
 """
 
-import urlparse
+from urllib.parse import urlparse
+
 import requests
+
 import xbmcplugin
 
-from audioaddict.api import AudioAddictApi
-from audioaddict.channels import create_list_item
-from audioaddict.exceptions import NoStreamingServerOnlineError
+from resources.lib.audioaddict.api import AudioAddictApi
+from resources.lib.audioaddict.channels import create_list_item
+from resources.lib.audioaddict.exceptions import NoStreamingServerOnlineError
 
 
 def play_stream(addon, settings):
@@ -27,9 +29,7 @@ def play_stream(addon, settings):
     channel = api.channel_by_key(channel_key)
 
     channel_url = get_valid_channel_url(playlist)
-    stream_url = "%s|User-Agent=%s&Referer=%s" % (channel_url,
-                                                  settings.user_agent,
-                                                  network.referer)
+    stream_url = f'{channel_url}|User-Agent={settings.user_agent}&Referer={network.referer}'
 
     list_item = create_list_item(channel)
     list_item.setPath(stream_url)
@@ -39,7 +39,7 @@ def play_stream(addon, settings):
 
 def get_valid_channel_url(playlist):
     for channel_url in playlist:
-        parsed_url = urlparse.urlparse(channel_url)
+        parsed_url = urlparse(channel_url)
         if server_online(parsed_url.netloc):
             return channel_url
 
@@ -48,7 +48,7 @@ def get_valid_channel_url(playlist):
 
 def server_online(domain):
     try:
-        requests.head("http://%s" % domain)
+        requests.head(f'http://{domain}')
     except requests.exceptions.ConnectionError:
         return False
 

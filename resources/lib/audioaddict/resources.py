@@ -3,8 +3,9 @@
     Functionality related to internal resources like settings, paths, ...
 """
 
-import os
 import json
+import os
+
 import xbmc
 
 
@@ -41,6 +42,6 @@ def get_profile_path(addon):
 
 def get_translated_kodi_path(addon, id_):
     kodi_path = addon.getAddonInfo(id_)
-    real_path = xbmc.translatePath(kodi_path).decode('utf-8')
+    real_path = xbmc.translatePath(kodi_path)
 
     return real_path

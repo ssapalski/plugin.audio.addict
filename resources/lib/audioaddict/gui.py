@@ -8,9 +8,10 @@ import xbmcgui
 
 
 class TextViewer(xbmcgui.WindowXMLDialog):
+
     def __new__(cls, *args, **kwargs):
         return super(TextViewer, cls).__new__(cls,
-                                              "DialogTextViewer.xml",
+                                              'DialogTextViewer.xml',
                                               None)
 
     def __init__(self, header, text):
