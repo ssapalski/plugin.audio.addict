@@ -4,14 +4,13 @@
 """
 
 import xbmcgui
-import xbmcplugin
 
-from audioaddict.exceptions import NoNetworksSelectedError
+import xbmcplugin
 
 
 def show_networks(addon, settings):
     for network in settings.networks:
-        if not addon.getBooleanSetting('activate_%s' % network.key):
+        if not addon.getBooleanSetting(f'activate_{network.key}'):
             continue
 
         url_parameters = {
@@ -33,8 +32,8 @@ def show_networks(addon, settings):
 
 def count_active_networks(addon, settings):
     count = 0
-    for network in settings.networks:
-        if addon.getBooleanSetting('activate_%s' % network.key):
+    for _ in settings.networks:
+        if addon.getBooleanSetting('activate{network.key}'):
             count += 1
 
     return count
@@ -42,8 +41,7 @@ def count_active_networks(addon, settings):
 
 def get_first_active_network_key(addon, settings):
     for network in settings.networks:
-        if addon.getBooleanSetting('activate_%s' % network.key):
+        if addon.getBooleanSetting('activate_{network.key}'):
             return network.key
 
-    raise RuntimeError("Don't call this function if there is no "
-                       "network active")
+    raise RuntimeError("Don't call this function if there is no network active")

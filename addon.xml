@@ -2,8 +2,8 @@
 <addon id="plugin.audio.addict" name="AudioAddict" version="0.6.1" provider-name="Samuel Sapalski (@leas)">
     <requires>
         <!-- Isengard 15.x -->
-        <import addon="xbmc.python" version="2.20.0"/>
-        <import addon="script.module.requests" version="2.12.4"/>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.requests" version="2.22.0"/>
     </requires>
     <extension point="xbmc.python.pluginsource" library="addon.py">
         <provides>audio</provides>

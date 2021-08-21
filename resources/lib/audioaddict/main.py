@@ -3,22 +3,17 @@
     The main entrance point of the addon.
 """
 
+
+from resources.lib.audioaddict.addon import ExtendedAddon
+from resources.lib.audioaddict.channels import show_channels
+from resources.lib.audioaddict.exceptions import EmptyCredentialsError, ListenKeyError, NoNetworksSelectedError, NoStreamingServerOnlineError
+from resources.lib.audioaddict.gui import TextViewer
+from resources.lib.audioaddict.networks import count_active_networks, get_first_active_network_key, show_networks
+from resources.lib.audioaddict.play import play_stream
+from resources.lib.audioaddict.resources import get_welcome_text
+from resources.lib.audioaddict.settings import Settings
+
 import xbmcgui
-
-from audioaddict.exceptions import EmptyCredentialsError, \
-                                   NoNetworksSelectedError, \
-                                   NoStreamingServerOnlineError, \
-                                   ListenKeyError
-
-from audioaddict.resources import get_welcome_text
-from audioaddict.settings import Settings
-from audioaddict.networks import show_networks, \
-                                 count_active_networks, \
-                                 get_first_active_network_key
-from audioaddict.channels import show_channels
-from audioaddict.addon import ExtendedAddon
-from audioaddict.play import play_stream
-from audioaddict.gui import TextViewer
 
 
 def run_addon(addon_url, addon_handle, addon_args):
@@ -33,15 +28,15 @@ def run_addon(addon_url, addon_handle, addon_args):
     except ListenKeyError:
         dialog = xbmcgui.Dialog()
         dialog.ok('Error', "Either your ListenKey is invalid or you don't "
-                           "have a premium account!")
+                           'have a premium account!')
     except NoNetworksSelectedError:
         dialog = xbmcgui.Dialog()
         dialog.ok('Error', "You didn't select any network in the addon "
-                           "settings but you have to select at least one!")
+                           'settings but you have to select at least one!')
     except NoStreamingServerOnlineError:
         dialog = xbmcgui.Dialog()
-        dialog.ok('Error', "There is no streaming server online for the "
-                           "current channel!")
+        dialog.ok('Error', 'There is no streaming server online for the '
+                           'current channel!')
 
 
 def main(addon, settings):

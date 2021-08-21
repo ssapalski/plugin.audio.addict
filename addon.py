@@ -3,14 +3,10 @@
     Unofficial addon for the AudioAddict network of radio streams.
 """
 
-import urlparse
 import sys
-import os
+from urllib.parse import parse_qs
 
-TOPDIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(TOPDIR, 'resources', 'lib'))
-
-import audioaddict  # pylint: disable=wrong-import-position
+from resources.lib import audioaddict
 
 
 def parse_addon_args(query_string):
@@ -49,14 +45,14 @@ def parse_addon_args(query_string):
 
     """
     if query_string.startswith('?'):
-        args = urlparse.parse_qs(query_string[1:])
+        args = parse_qs(query_string[1:])
     else:
-        args = urlparse.parse_qs(query_string)
+        args = parse_qs(query_string)
 
     if not args:
         return {}
 
-    for key, values in args.iteritems():
+    for key, values in args.items():
         if len(values) == 1:
             args[key] = values[0]
 
@@ -72,5 +68,5 @@ def main():
     audioaddict.run_addon(addon_url, addon_handle, addon_args)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

@@ -4,10 +4,12 @@
 """
 
 import urllib
+
 import xbmcaddon
 
 
 class ExtendedAddon(xbmcaddon.Addon):
+
     def __new__(cls, *args, **kwargs):
         return super(ExtendedAddon, cls).__new__(cls)
 
@@ -19,7 +21,7 @@ class ExtendedAddon(xbmcaddon.Addon):
         self.args = args
 
     def createUrl(self, params):
-        return self.url + '?' + urllib.urlencode(params)
+        return self.url + '?' + urllib.parse.urlencode(params)
 
     def getBooleanSetting(self, id_):
         setting = super(ExtendedAddon, self).getSetting(id_)
@@ -29,4 +31,4 @@ class ExtendedAddon(xbmcaddon.Addon):
         elif setting == 'false':
             return False
         else:
-            raise ValueError("id=%s isn't a boolean setting")
+            raise ValueError(f"id={id_} isn't a boolean setting")

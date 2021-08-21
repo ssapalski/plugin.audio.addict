@@ -3,14 +3,16 @@
     Functionality for internal settings.
 """
 
-import os
 import json
-import xbmc
+import os
 
-from audioaddict.resources import get_raw_settings
+from resources.lib.audioaddict.resources import get_raw_settings
+
+import xbmc
 
 
 class Settings(object):
+
     def __init__(self, addon):
         self._settings = get_raw_settings(addon)
 
@@ -33,6 +35,7 @@ class Settings(object):
 
 
 class NetworkSettings(object):
+
     def __init__(self, key, network, quality):
         self._network = network
         self._quality = quality
@@ -41,7 +44,7 @@ class NetworkSettings(object):
 
     @property
     def referer(self):
-        return "http://www.%s/" % self.domain
+        return f'http://www.{self.domain}/'
 
     @property
     def domain(self):
@@ -66,6 +69,6 @@ def load_settings(settings_path):
 
 def get_settings_path(addon):
     kodi_path = addon.getAddonInfo('path')
-    real_path = xbmc.translatePath(kodi_path).decode('utf-8')
+    real_path = xbmc.translatePath(kodi_path)
 
     return os.path.join(real_path, 'resources', 'data', 'settings.json')
