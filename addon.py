@@ -3,7 +3,7 @@
     Unofficial addon for the AudioAddict network of radio streams.
 """
 
-import urlparse
+import urllib.parse
 import sys
 import os
 
@@ -49,14 +49,14 @@ def parse_addon_args(query_string):
 
     """
     if query_string.startswith('?'):
-        args = urlparse.parse_qs(query_string[1:])
+        args = urllib.parse.parse_qs(query_string[1:])
     else:
-        args = urlparse.parse_qs(query_string)
+        args = urllib.parse.parse_qs(query_string)
 
     if not args:
         return {}
 
-    for key, values in args.iteritems():
+    for key, values in args.items():
         if len(values) == 1:
             args[key] = values[0]
 

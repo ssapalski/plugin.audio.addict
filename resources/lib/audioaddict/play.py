@@ -3,7 +3,7 @@
     Functionality triggered if the user starts/plays a channel.
 """
 
-import urlparse
+import urllib.parse
 import requests
 import xbmcplugin
 
@@ -39,7 +39,7 @@ def play_stream(addon, settings):
 
 def get_valid_channel_url(playlist):
     for channel_url in playlist:
-        parsed_url = urlparse.urlparse(channel_url)
+        parsed_url = urllib.parse.urlparse(channel_url)
         if server_online(parsed_url.netloc):
             return channel_url
 

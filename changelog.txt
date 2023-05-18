@@ -1,3 +1,6 @@
+v0.6.2 (2023-May-18)
+  * fix Kodi 20 incompatibility
+
 v0.6.1 (2018-July-11)
   * fix Kodi 18 incompatibility
 

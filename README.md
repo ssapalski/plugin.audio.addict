@@ -27,7 +27,7 @@ You have also the possibility to clone the repository, make modifications and cr
 
 ```
 git clone -b <branch_name> https://github.com/ssapalski/plugin.audio.addict.git
-zip -r plugin.audio.addict.zip plugin.audio.addict -x "*git*"
+zip -D -r plugin.audio.addict.zip plugin.audio.addict -x "*git*"
 ```
 
 # Settings

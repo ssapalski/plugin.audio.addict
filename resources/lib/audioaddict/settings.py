@@ -5,7 +5,7 @@
 
 import os
 import json
-import xbmc
+import xbmcvfs
 
 from audioaddict.resources import get_raw_settings
 
@@ -66,6 +66,6 @@ def load_settings(settings_path):
 
 def get_settings_path(addon):
     kodi_path = addon.getAddonInfo('path')
-    real_path = xbmc.translatePath(kodi_path).decode('utf-8')
+    real_path = xbmcvfs.translatePath(kodi_path).decode('utf-8')
 
     return os.path.join(real_path, 'resources', 'data', 'settings.json')

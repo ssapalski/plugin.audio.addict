@@ -5,7 +5,7 @@
 
 import os
 import json
-import xbmc
+import xbmcvfs
 
 
 def get_welcome_text(addon):
@@ -41,6 +41,6 @@ def get_profile_path(addon):
 
 def get_translated_kodi_path(addon, id_):
     kodi_path = addon.getAddonInfo(id_)
-    real_path = xbmc.translatePath(kodi_path).decode('utf-8')
+    real_path = xbmcvfs.translatePath(kodi_path)
 
     return real_path
