@@ -55,10 +55,8 @@ def get_channels(network):
 
 def create_list_item(channel):
     image_url = channel.image_default()
-    list_item = xbmcgui.ListItem(label=channel.name,
-                                 thumbnailImage=image_url,
-                                 iconImage=image_url)
-
+    list_item = xbmcgui.ListItem(label=channel.name)
+    list_item.setArt ({"thumb":image_url})
     date, time = channel.creation_timestamp.split('T')
     timestamp = "%s %s" % (date, time.split('-')[0])
 

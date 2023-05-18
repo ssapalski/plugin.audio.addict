@@ -3,7 +3,7 @@
     Extension of xbmcaddon.Addon with useful attributes and methods.
 """
 
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import xbmcaddon
 
 
@@ -19,7 +19,7 @@ class ExtendedAddon(xbmcaddon.Addon):
         self.args = args
 
     def createUrl(self, params):
-        return self.url + '?' + urllib.urlencode(params)
+        return self.url + '?' + urllib.parse.urlencode(params)
 
     def getBooleanSetting(self, id_):
         setting = super(ExtendedAddon, self).getSetting(id_)
